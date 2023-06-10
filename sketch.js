@@ -35,22 +35,17 @@ function draw(){
     if(keyDown("left_arrow")){ //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
       ghost.x = ghost.x - 3; //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
     } //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
-    
     if(keyDown("right_arrow")){ //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
       ghost.x = ghost.x + 3; //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
-    } //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
-    
+    } //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<    
     if(keyDown("space")){ //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
       ghost.velocityY = -10; //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
     } //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
-    
-    ghost.velocityY = ghost.velocityY + 0.8 //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
-    
+    ghost.velocityY = ghost.velocityY + 0.8 //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<
     if(tower.y > 400){
       tower.y = 300
     }
     spawnDoors(); //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
- 
     if(climbersGroup.isTouching(ghost)){ //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
       ghost.velocityY = 0; //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
     } //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -60,45 +55,33 @@ function draw(){
     } //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
     drawSprites();
   } //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
-  
-  if (gameState === "end"){ //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
+    if (gameState === "end"){ //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
     stroke("yellow"); //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
     fill("yellow"); //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
     textSize(30); //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
     text("Fim de Jogo", 230,250) //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
   } //adicionar <<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 }
-
 function spawnDoors() {  //adicionar toda a função <<<<<<<<<<<<<<<<<<<<<<<<<<<
-  //escreva aqui o código para gerar as portas na torre
   if (frameCount % 240 === 0) {
     var door = createSprite(200, -50);
     var climber = createSprite(200,10);
     var invisibleBlock = createSprite(200,15);
     invisibleBlock.width = climber.width;
-    invisibleBlock.height = 2;
-    
+    invisibleBlock.height = 2;  
     door.x = Math.round(random(120,400));
     climber.x = door.x;
     invisibleBlock.x = door.x;
-    
     door.addImage(doorImg);
     climber.addImage(climberImg);
-    
     door.velocityY = 1;
     climber.velocityY = 1;
     invisibleBlock.velocityY = 1;
-    
     ghost.depth = door.depth;
     ghost.depth +=1;
-   
-    //designe tempo de vida a variável
     door.lifetime = 800;
     climber.lifetime = 800;
     invisibleBlock.lifetime = 800;
-
-    //adicione cada porta ao grupo
     doorsGroup.add(door);
     invisibleBlock.debug = true;
     climbersGroup.add(climber);
